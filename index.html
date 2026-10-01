@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unubold Batsuren – CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --side: #485572;
+      --side-top: #2f4264;
+      --heading: #2f4264;
+      --text: #1d1d1d;
+      --paper: #ffffff;
+      --page: #e9ecf1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Fira Sans", "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .cv {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      max-width: 1000px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--paper);
+    }
+
+    /* Sidebar */
+    aside {
+      background: var(--side);
+      color: #fff;
+      padding: 0 32px 40px;
+      border-top: 24px solid var(--side-top);
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 300;
+      margin: 28px 0 18px;
+    }
+    .photo {
+      display: block;
+      width: 100%;
+      max-width: 180px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      background: #5d6b89;
+      margin-bottom: 40px;
+    }
+    aside h2 {
+      font-size: 14px;
+      font-weight: 600;
+      font-variant: small-caps;
+      letter-spacing: .06em;
+      margin: 28px 0 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255,255,255,.7);
+    }
+    aside p { margin: 0 0 6px; font-weight: 300; }
+    aside ul { margin: 0; padding-left: 20px; font-weight: 300; }
+    aside a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); }
+    aside a:hover, aside a:focus-visible { border-bottom-color: #fff; }
+
+    /* Main */
+    main { padding: 40px 36px 48px; }
+    main h2 {
+      font-size: 22px;
+      font-weight: 400;
+      font-variant: small-caps;
+      color: var(--heading);
+      margin: 0 0 10px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--heading);
+    }
+    section { margin-bottom: 28px; }
+    .job { margin-bottom: 14px; }
+    .job h3 { font-size: 15px; margin: 0; font-weight: 600; }
+    .job h3 em { font-weight: 400; }
+    .job .years { margin: 0 0 4px; }
+    .job ul { margin: 0; padding-left: 26px; }
+    .job li { margin-bottom: 2px; }
+    .lang { font-variant: small-caps; margin: 0 0 4px; }
+    .hobbies p { margin: 0 0 6px; }
+
+    a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+    @media (max-width: 760px) {
+      .cv { grid-template-columns: 1fr; }
+      main { padding: 28px 22px 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv">
+    <aside>
+      <h1>Unubold Batsuren</h1>
+      <!-- Save your photo as photo.jpg in the same folder as this file -->
+      <img class="photo" src="photo.jpg" alt="Portrait of Unubold Batsuren">
+
+      <h2>Profile</h2>
+      <p>Multimedia Technology student building a career across graphic design, film, animation, and 3D modeling. Practical experience creating visual content for real-world use, with a growing interest in motion graphics and 3D production.</p>
+
+      <h2>Contact details</h2>
+      <p>@ <a href="mailto:fcloudwest@gmail.com">fcloudwest@gmail.com</a></p>
+      <p>Phone: <a href="tel:+97685338534">+976 85338534</a></p>
+      <p>GitHub: <a href="https://github.com/YOUR-GITHUB-NAME" target="_blank" rel="noopener">github.com/YOUR-GITHUB-NAME</a></p>
+
+      <h2>Personal information</h2>
+      <p>Citizenship: <strong>Mongolia</strong></p>
+      <p>Family: <strong>Parents and two siblings</strong></p>
+
+      <h2>Skills</h2>
+      <ul>
+        <li>Photoshop</li>
+        <li>Canva</li>
+        <li>MS Word, Excel, PowerPoint</li>
+        <li>Communication and team collaboration</li>
+      </ul>
+    </aside>
+
+    <main>
+      <section>
+        <h2>Experience</h2>
+
+        <div class="job">
+          <h3>IT Support Volunteer – <em>School</em></h3>
+          <p class="years">2023–2024</p>
+          <ul>
+            <li>Diagnosed and resolved printer hardware and connectivity issues for teaching staff</li>
+            <li>Performed routine maintenance (cleaning, toner replacement, driver updates) to reduce equipment downtime</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Design Assistant (Volunteer) – <em>School</em></h3>
+          <p class="years">2023–2024</p>
+          <ul>
+            <li>Designed presentation slides and graphics for teaching staff using Photoshop and Canva</li>
+            <li>Created the official slideshow presented at the school graduation ceremony</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Barista – <em>Cheers (Bubble Tea)</em></h3>
+          <p class="years">2024–2025</p>
+          <ul>
+            <li>Delivered customer service in a fast-paced retail environment, handling orders and payments</li>
+            <li>Collaborated with staff during peak hours, developing time-management and teamwork skills</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p>Graduated Shildeg high school<br>2025</p>
+        <p>Currently pursuing a bachelor's degree of Multimedia Technology at the Mongolian University of Science and Technology.</p>
+      </section>
+
+      <section>
+        <h2>Language</h2>
+        <p class="lang">English (C1)</p>
+        <p class="lang">Mongolian (Native)</p>
+      </section>
+
+      <section class="hobbies">
+        <h2>Hobbies</h2>
+        <p><em>Music:</em> Alternative rock, shoegaze, electronic, and pop.</p>
+        <p><em>Video games:</em> League of Legends, Valorant, Counter-Strike 2, and more...</p>
+        <p><em>Films:</em> Any genre of films.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
