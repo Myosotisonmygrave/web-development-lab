@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index (3).html",
-            "file": "c:\\Users\\msi\\Documents\\Web development\\lab3\\index (3).html"
+            "file": "c:\\Users\\msi\\Documents\\Web development\\lab3\\index.html"
         }
     ]
 }
