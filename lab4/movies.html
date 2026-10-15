@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кино Булан – Кино тухай вэб</title>
+  <style>
+    :root {
+      --curtain: #4a1420;
+      --curtain-dark: #2e0b14;
+      --brass: #d9a441;
+      --paper: #f6f1e7;
+      --ink: #231a1c;
+      --card: #fffdf8;
+      --line: #e0d6c2;
+      --gap: 1.25rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+    /* ---------- HEADER + NAV (FLEXBOX) ---------- */
+    .site-header { background: var(--curtain); color: #fff; padding: 0 2rem; }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--gap);
+      min-height: 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+
+    .logo { font-size: 1.5rem; font-weight: 700; }
+    .logo span { color: var(--brass); }
+
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; font-family: "Segoe UI", Arial, sans-serif; font-size: .95rem; }
+    .nav-links a { padding: .4rem .1rem; border-bottom: 2px solid transparent; }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { border-bottom-color: var(--brass); }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 0 3.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--gap);
+    }
+    .hero h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.15; max-width: 16ch; }
+    .hero p { max-width: 42ch; opacity: .85; font-family: "Segoe UI", Arial, sans-serif; }
+
+    /* ---------- PAGE (GRID) ---------- */
+    .page {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .section-title { font-size: 1.5rem; margin-bottom: 1rem; color: var(--curtain); }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+
+    .movie {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .poster {
+      aspect-ratio: 3 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .p1 { background: linear-gradient(135deg, #1d3557, #6d8ca8); }
+    .p2 { background: linear-gradient(135deg, #3b4a2e, #b7a96a); }
+    .p3 { background: linear-gradient(135deg, #2a6f7a, #f2b880); }
+    .p4 { background: linear-gradient(135deg, #1a1a2e, #5c4b6e); }
+    .p5 { background: linear-gradient(135deg, #7a2e1d, #e0a458); }
+    .p6 { background: linear-gradient(135deg, #3a2a20, #a1887f); }
+
+    .movie-body { padding: 1rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: .82rem;
+    }
+    .genre { padding: .1rem .6rem; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); }
+    .rating { font-weight: 700; color: #9a6a10; }
+
+    .movie h3 { font-size: 1.1rem; }
+    .movie p { font-size: .92rem; flex: 1; }
+
+    .btn {
+      align-self: flex-start;
+      padding: .4rem .9rem;
+      border-radius: 4px;
+      background: var(--curtain);
+      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: .85rem;
+    }
+    .btn:hover { background: var(--curtain-dark); }
+
+    /* ---------- SIDEBAR ---------- */
+    .sidebar { display: flex; flex-direction: column; gap: var(--gap); }
+    .widget { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem; }
+    .widget h2 { font-size: 1.1rem; margin-bottom: .6rem; color: var(--curtain); }
+    .widget ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .widget li { padding-bottom: .4rem; border-bottom: 1px dashed var(--line); }
+    .widget li:last-child { border-bottom: none; padding-bottom: 0; }
+    .top-list li { display: flex; justify-content: space-between; gap: .5rem; }
+    .top-list b { color: #9a6a10; font-family: "Segoe UI", Arial, sans-serif; }
+    .chips { flex-direction: row !important; flex-wrap: wrap; }
+    .chips li { border: none; padding: .15rem .7rem; background: var(--paper); border-radius: 999px; font-size: .85rem; }
+
+    /* ---------- FOOTER ---------- */
+    .site-footer { background: var(--curtain-dark); color: #e7dcc8; padding: 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .footer-inner h2 { font-size: 1rem; margin-bottom: .5rem; color: var(--brass); }
+    .footer-inner ul { list-style: none; }
+    .copyright { max-width: 1200px; margin: 1.5rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.18); font-size: .85rem; text-align: center; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 960px) { .movie-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 720px) {
+      .navbar { flex-direction: column; padding: 1rem 0; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      .page, .movie-grid, .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Үндсэн цэс">
+      <a href="#" class="logo">Кино <span>Булан</span></a>
+      <ul class="nav-links">
+        <li><a href="#" aria-current="page">Нүүр</a></li>
+        <li><a href="#">Шинэ кино</a></li>
+        <li><a href="#">Төрөл</a></li>
+        <li><a href="#">Шүүмж</a></li>
+        <li><a href="#">Холбоо барих</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Үзэхэд үнэн хэрэгтэй кинонууд</h1>
+      <p>Алдартай уран сайхны киноны товч танилцуулга, үнэлгээ, төрлөөр нь хайх боломжтой.</p>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <main>
+      <h2 class="section-title">Энэ сарын сонголт</h2>
+
+      <section class="movie-grid" aria-label="Киноны жагсаалт">
+        <article class="movie">
+          <div class="poster p1" aria-hidden="true">🌀</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Шинжлэх ухааны уран зөгнөл</span><span class="rating">★ 8.8</span></div>
+            <h3>Inception (2010)</h3>
+            <p>Зүүдэнд нэвтэрч санаа суулгадаг хулгайчдын баг тухай бодлыг эргүүлсэн триллер.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+
+        <article class="movie">
+          <div class="poster p2" aria-hidden="true">🏠</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Триллер</span><span class="rating">★ 8.5</span></div>
+            <h3>Parasite (2019)</h3>
+            <p>Ядуу, баян хоёр гэр бүлийн уулзалтаас эхлэх нийгмийн хурц хошин өгүүллэг.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+
+        <article class="movie">
+          <div class="poster p3" aria-hidden="true">🐉</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Анимэйшн</span><span class="rating">★ 8.6</span></div>
+            <h3>Spirited Away (2001)</h3>
+            <p>Сүнсний ертөнцөд төөрсөн охин эцэг эхээ аврах гэж зүтгэх Миязакигийн бүтээл.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+
+        <article class="movie">
+          <div class="poster p4" aria-hidden="true">🦇</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Экшн</span><span class="rating">★ 9.0</span></div>
+            <h3>The Dark Knight (2008)</h3>
+            <p>Готам хотыг эмх замбараагүй байдалд оруулах гэж буй Жокертой Батман тулна.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+
+        <article class="movie">
+          <div class="poster p5" aria-hidden="true">🚀</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Шинжлэх ухааны уран зөгнөл</span><span class="rating">★ 8.7</span></div>
+            <h3>Interstellar (2014)</h3>
+            <p>Дэлхий үхэж байгаа үед шинэ гараг хайн сансар дундуур хөвөх багийн аялал.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+
+        <article class="movie">
+          <div class="poster p6" aria-hidden="true">⚛</div>
+          <div class="movie-body">
+            <div class="meta"><span class="genre">Түүхэн драм</span><span class="rating">★ 8.3</span></div>
+            <h3>Oppenheimer (2023)</h3>
+            <p>Атомын бөмбөг бүтээсэн эрдэмтний амьдрал, сонголт, үр дагаврыг өгүүлнэ.</p>
+            <a href="#" class="btn">Дэлгэрэнгүй</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <aside class="sidebar" aria-label="Нэмэлт мэдээлэл">
+      <section class="widget">
+        <h2>Өндөр үнэлгээтэй</h2>
+        <ul class="top-list">
+          <li><span>The Dark Knight</span><b>9.0</b></li>
+          <li><span>Inception</span><b>8.8</b></li>
+          <li><span>Interstellar</span><b>8.7</b></li>
+          <li><span>Spirited Away</span><b>8.6</b></li>
+        </ul>
+      </section>
+
+      <section class="widget">
+        <h2>Төрлөөр хайх</h2>
+        <ul class="chips">
+          <li>Экшн</li>
+          <li>Драм</li>
+          <li>Анимэйшн</li>
+          <li>Триллер</li>
+          <li>Уран зөгнөл</li>
+        </ul>
+      </section>
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section>
+        <h2>Кино Булан</h2>
+        <p>Кино сонирхогчдод зориулсан танилцуулга, үнэлгээний сайт.</p>
+      </section>
+      <section>
+        <h2>Холбоос</h2>
+        <ul>
+          <li><a href="#">Шинэ кино</a></li>
+          <li><a href="#">Төрөл</a></li>
+          <li><a href="#">Шүүмж</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Холбоо барих</h2>
+        <ul>
+          <li>info@kinobulan.mn</li>
+          <li>Улаанбаатар хот</li>
+        </ul>
+      </section>
+    </div>
+    <p class="copyright">© 2026 Кино Булан. Бүх эрх хуулиар хамгаалагдсан.</p>
+  </footer>
+
+</body>
+</html>
