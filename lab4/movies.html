@@ -97,11 +97,20 @@
     }
 
     .poster {
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 3 / 4;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
+      overflow: hidden;
+    }
+    .poster img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .p1 { background: linear-gradient(135deg, #1d3557, #6d8ca8); }
     .p2 { background: linear-gradient(135deg, #3b4a2e, #b7a96a); }
@@ -190,7 +199,8 @@
 
       <section class="movie-grid" aria-label="Киноны жагсаалт">
         <article class="movie">
-          <div class="poster p1" aria-hidden="true">🌀</div>
+          <div class="poster p1"><span aria-hidden="true">🌀</span>
+            <img src="images/inception.jpg" alt="Inception киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Шинжлэх ухааны уран зөгнөл</span><span class="rating">★ 8.8</span></div>
             <h3>Inception (2010)</h3>
@@ -200,7 +210,8 @@
         </article>
 
         <article class="movie">
-          <div class="poster p2" aria-hidden="true">🏠</div>
+          <div class="poster p2"><span aria-hidden="true">🏠</span>
+            <img src="images/parasite.jpg" alt="Parasite киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Триллер</span><span class="rating">★ 8.5</span></div>
             <h3>Parasite (2019)</h3>
@@ -210,7 +221,8 @@
         </article>
 
         <article class="movie">
-          <div class="poster p3" aria-hidden="true">🐉</div>
+          <div class="poster p3"><span aria-hidden="true">🐉</span>
+            <img src="images/spirited-away.jpg" alt="Spirited Away киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Анимэйшн</span><span class="rating">★ 8.6</span></div>
             <h3>Spirited Away (2001)</h3>
@@ -220,7 +232,8 @@
         </article>
 
         <article class="movie">
-          <div class="poster p4" aria-hidden="true">🦇</div>
+          <div class="poster p4"><span aria-hidden="true">🦇</span>
+            <img src="images/dark-knight.jpg" alt="The Dark Knight киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Экшн</span><span class="rating">★ 9.0</span></div>
             <h3>The Dark Knight (2008)</h3>
@@ -230,7 +243,8 @@
         </article>
 
         <article class="movie">
-          <div class="poster p5" aria-hidden="true">🚀</div>
+          <div class="poster p5"><span aria-hidden="true">🚀</span>
+            <img src="images/interstellar.jpg" alt="Interstellar киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Шинжлэх ухааны уран зөгнөл</span><span class="rating">★ 8.7</span></div>
             <h3>Interstellar (2014)</h3>
@@ -240,7 +254,8 @@
         </article>
 
         <article class="movie">
-          <div class="poster p6" aria-hidden="true">⚛</div>
+          <div class="poster p6"><span aria-hidden="true">⚛</span>
+            <img src="images/oppenheimer.jpg" alt="Oppenheimer киноны постер" loading="lazy" onerror="this.remove()"></div>
           <div class="movie-body">
             <div class="meta"><span class="genre">Түүхэн драм</span><span class="rating">★ 8.3</span></div>
             <h3>Oppenheimer (2023)</h3>
