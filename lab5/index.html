@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<!-- REQUIRED for responsive pages: without it phones pretend to be ~980px wide -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лаб 5 – Responsive хуудас</title>
+<style>
+  /* ---------- 0. Reset & tokens ---------- */
+  *, *::before, *::after { box-sizing: border-box; }   /* padding never adds to width */
+  :root {
+    --bg: #eef2f6;
+    --ink: #14213d;
+    --muted: #4a5568;
+    --accent: #e07a00;
+    --card: #ffffff;
+    --line: #cfd8e3;
+    --gap: 1rem;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  img { max-width: 100%; height: auto; display: block; }  /* images can't overflow */
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 var(--gap); }
+
+  /* ---------- 1. MOBILE (default, < 600px) ---------- */
+  header { background: var(--ink); color: #fff; position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+  .logo { font-weight: 700; text-decoration: none; }
+
+  /* Hamburger: pure CSS using a hidden checkbox */
+  #menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+  .burger { cursor: pointer; padding: .75rem; display: grid; gap: 5px; }
+  .burger span { display: block; width: 24px; height: 3px; background: #fff; border-radius: 2px; }
+  #menu-toggle:focus-visible + .burger { outline: 2px solid var(--accent); }
+
+  nav { display: none; }                       /* hidden until toggled */
+  #menu-toggle:checked ~ nav { display: block; }
+  nav ul { list-style: none; margin: 0; padding: 0 0 .75rem; }
+  nav a { display: block; padding: .75rem 0; text-decoration: none; border-top: 1px solid rgba(255,255,255,.15); }
+  nav a:hover, nav a:focus-visible { color: var(--accent); }
+
+  .hero { padding: 2.5rem 0 1.5rem; }
+  .hero h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .75rem; }
+  .hero p { color: var(--muted); margin: 0 0 1.25rem; }
+  .btn { display: inline-block; background: var(--accent); color: #fff; padding: .75rem 1.25rem;
+         border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .btn:hover { filter: brightness(.92); }
+
+  /* Cards: one column on mobile */
+  .cards { display: grid; grid-template-columns: 1fr; gap: var(--gap); padding: 1rem 0 2rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 1.25rem; }
+  .card h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
+  .card p { margin: 0; color: var(--muted); }
+
+  footer { background: var(--ink); color: #cbd5e1; padding: 1.5rem 0; text-align: center; font-size: .9rem; }
+
+  /* ---------- 2. TABLET (≥ 600px) ---------- */
+  @media (min-width: 600px) {
+    .hero h1 { font-size: 2.4rem; }
+    .cards { grid-template-columns: repeat(2, 1fr); }   /* two columns */
+  }
+
+  /* ---------- 3. DESKTOP (≥ 992px) ---------- */
+  @media (min-width: 992px) {
+    .burger { display: none; }                  /* no hamburger on desktop */
+    nav { display: block !important; }          /* menu always visible, inline */
+    nav ul { display: flex; gap: 1.5rem; padding: 0; }
+    nav a { border-top: 0; padding: .5rem 0; }
+
+    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; padding: 4rem 0 2rem; }
+    .hero h1 { font-size: 3rem; }
+    .cards { grid-template-columns: repeat(3, 1fr); }   /* three columns */
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Миний хуудас</a>
+
+    <input type="checkbox" id="menu-toggle" aria-label="Цэс нээх/хаах">
+    <label class="burger" for="menu-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+    <nav aria-label="Үндсэн цэс">
+      <ul>
+        <li><a href="#top">Нүүр</a></li>
+        <li><a href="#services">Үйлчилгээ</a></li>
+        <li><a href="#about">Бидний тухай</a></li>
+        <li><a href="#contact">Холбоо барих</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <div>
+      <h1>Responsive вэб хуудас</h1>
+      <p>Энэ хуудас гар утас, таблет, компьютер дээр дэлгэцийн хэмжээнд өөрийгөө тохируулна.</p>
+      <a class="btn" href="#services">Дэлгэрэнгүй</a>
+    </div>
+    <!-- Replace with your own image: <img src="hero.jpg" alt="..."> -->
+    <div class="card"><h2>Mobile-First</h2><p>Эхлээд жижиг дэлгэцийн CSS, дараа нь media query-гээр томруулна.</p></div>
+  </section>
+
+  <section id="services" class="wrap">
+    <div class="cards">
+      <article class="card"><h2>Mobile</h2><p>1 багана, hamburger цэс.</p></article>
+      <article class="card"><h2>Tablet</h2><p>2 багана, том гарчиг.</p></article>
+      <article class="card"><h2>Desktop</h2><p>3 багана, хэвтээ цэс.</p></article>
+    </div>
+  </section>
+
+  <section id="about" class="wrap"><div class="card"><h2>Бидний тухай</h2><p>Энд өөрийн тухай товч мэдээллээ бичнэ.</p></div></section>
+  <section id="contact" class="wrap" style="padding-block:1rem 2rem"><div class="card"><h2>Холбоо барих</h2><p>name@example.com</p></div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Лаб 5</div></footer>
+
+</body>
+</html>
