@@ -1,0 +1,97 @@
+@use "../abstracts" as *;
+
+// BEM: block .card, elements __inner/__face/__title..., modifier --back / --flipped
+.card {
+  position: relative;
+  min-height: rem(360px);
+  perspective: rem(1000px);
+  animation: card-in var(--duration) ease both;
+
+  // Stagger: 9 карт тус бүр 80ms-ээр хоцорно
+  @for $i from 1 through 9 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 80}ms;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform var(--duration);
+  }
+
+  &:hover &__inner,
+  &:focus-within &__inner,
+  &--flipped &__inner {
+    transform: rotateY(180deg);
+  }
+
+  &__face {
+    @include flex-center(column, var(--space-2));
+    position: absolute;
+    inset: 0;
+    padding: var(--space-3);
+    overflow: auto;
+    text-align: center;
+    background: var(--color-surface);
+    border: rem(1px) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    backface-visibility: hidden;
+
+    &--back {
+      justify-content: flex-start;
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__cover {
+    width: 70%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: rem(20px);
+  }
+
+  &__meta {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  &__tracks {
+    margin: 0;
+    padding-left: var(--space-4);
+    text-align: left;
+    font-size: rem(14px);
+  }
+
+  &__toggle {
+    position: absolute;
+    right: var(--space-2);
+    bottom: var(--space-2);
+    z-index: 2;
+    padding: var(--space-1) var(--space-2);
+    font: inherit;
+    font-size: rem(12px);
+    cursor: pointer;
+    color: var(--color-text);
+    background: transparent;
+    border: rem(1px) solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(rem(24px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

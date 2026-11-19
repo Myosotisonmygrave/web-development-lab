@@ -1,0 +1,22 @@
+// Design tokens: өнгө, радиус, breakpoint, spacing нь зөвхөн энд.
+$colors-light: (
+  "bg": #f6f4ef,
+  "surface": #ffffff,
+  "text": #1b1b1f,
+  "muted": #5d5d66,
+  "accent": #c0392b,
+  "border": #ddd8cc,
+);
+
+$colors-dark: (
+  "bg": #121214,
+  "surface": #1e1e22,
+  "text": #f1f0ec,
+  "muted": #a5a5ae,
+  "accent": #ff6b5a,
+  "border": #33333a,
+);
+
+$radii: ("sm": 4px, "md": 10px, "lg": 18px);
+$breakpoints: ("sm": 600px, "md": 900px, "lg": 1200px);
+$spacing: ("1": 4px, "2": 8px, "3": 16px, "4": 24px, "5": 40px);

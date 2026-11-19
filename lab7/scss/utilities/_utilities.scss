@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+// @each-ээр үүсгэсэн utility классууд
+@each $key, $value in $spacing {
+  .u-mt-#{$key} { margin-top: rem($value) !important; }
+  .u-mb-#{$key} { margin-bottom: rem($value) !important; }
+  .u-p-#{$key}  { padding: rem($value) !important; }
+}
+
+@each $name, $value in $colors-light {
+  .u-text-#{$name} { color: var(--color-#{$name}) !important; }
+  .u-bg-#{$name}   { background-color: var(--color-#{$name}) !important; }
+}
+
+@each $name, $value in $radii {
+  .u-rounded-#{$name} { border-radius: var(--radius-#{$name}) !important; }
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.u-text-center { text-align: center !important; }

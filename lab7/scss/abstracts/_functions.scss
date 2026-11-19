@@ -1,0 +1,22 @@
+@use "sass:math";
+@use "sass:color";
+
+// px -> rem.  rem(24px) => 1.5rem
+@function rem($px, $base: 16px) {
+  @if math.unit($px) != "px" {
+    @error "rem(): px нэгжтэй утга өгнө үү, авсан: #{$px}";
+  }
+  @return math.div($px, $base) * 1rem;
+}
+
+// Дэвсгэр өнгөнд тохирох уншигдахуйц (цагаан/хар) текстийн өнгө сонгоно.
+@function contrast($bg, $light: #fff, $dark: #111) {
+  $r: color.channel($bg, "red", $space: rgb);
+  $g: color.channel($bg, "green", $space: rgb);
+  $b: color.channel($bg, "blue", $space: rgb);
+  $luma: math.div(0.2126 * $r + 0.7152 * $g + 0.0722 * $b, 255);
+  @if $luma > 0.55 {
+    @return $dark;
+  }
+  @return $light;
+}

@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "tokens";
+
+// Mobile-first media query: @include respond(md) { ... }
+@mixin respond($bp) {
+  @if map.has-key(tokens.$breakpoints, $bp) {
+    @media (min-width: map.get(tokens.$breakpoints, $bp)) {
+      @content;
+    }
+  } @else {
+    @error "Тодорхойгүй breakpoint: #{$bp}";
+  }
+}
+
+@mixin flex-center($direction: row, $gap: null) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+  @if $gap {
+    gap: $gap;
+  }
+}

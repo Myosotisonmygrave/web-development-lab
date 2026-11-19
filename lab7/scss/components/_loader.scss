@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+
+.loader {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: var(--color-bg);
+  transition: opacity 0.4s, visibility 0.4s;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__spinner {
+    width: rem(48px);
+    height: rem(48px);
+    border: rem(5px) solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
