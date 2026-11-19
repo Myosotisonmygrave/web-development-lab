@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+@mixin theme-vars($colors) {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+  --color-on-accent: #{contrast(map.get($colors, "accent"))};
+}
+
+:root {
+  @include theme-vars($colors-light);
+  color-scheme: light;
+
+  @each $name, $value in $radii {
+    --radius-#{$name}: #{rem($value)};
+  }
+  @each $name, $value in $spacing {
+    --space-#{$name}: #{rem($value)};
+  }
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --duration: 0.6s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include theme-vars($colors-dark);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include theme-vars($colors-dark);
+  color-scheme: dark;
+}

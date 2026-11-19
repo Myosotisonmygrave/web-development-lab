@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  max-width: rem(1200px);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3);
+
+  @include respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.site-footer {
+  padding: var(--space-4);
+  color: var(--color-muted);
+  text-align: center;
+}
